@@ -15,12 +15,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-    name: mysql-pv-claim
-    labels:
-      app: wordpress
+  name: mysql-pv-claim
+  labels:
+    app: wordpress
 spec:
   accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
@@ -43,7 +43,7 @@ spec:
       labels:
         app: wordpress
         tier: mysql
-    spec:
+  spec:
       containers:
       - image: mysql:5.6
         name: mysql
@@ -57,7 +57,7 @@ spec:
         - containerPort: 3306
           name: mysql
         readinessProbe:
-          tcpsocket:
+          tcpSocket:
             port: 3306
           initialDelaySeconds: 5
           periodSeconds: 10
@@ -69,7 +69,7 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
-        volumes:
-        - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pv-claim
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
