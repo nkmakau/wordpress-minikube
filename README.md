@@ -9,11 +9,11 @@ To deploy wordpress on minikube K8
 # Create a folder
 On terminal run below to create a folder
 
-$mkdir <name of your folder>
+$mkdir "name of your folder"
 
 Navigate to the folder:
 
-$ cd <name of your folder>
+$ cd "name of your folder"
 
 # Create Kubernetes Secret
 
